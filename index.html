@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="./index.js"></script> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+    <div class="row main-section">
+    <div class="col-md-12 col-sm-12 header">
+    <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+       <div class="image-upload">
+        <label for="file-input">
+          <img src="addlogo.png" style="pointer-events: none" width="300px" height="150px"/>
+        </label>
+        <input id="file-input" type="file" />
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+    <h1 contenteditable="True">Invoice</h1>
+    <label contenteditable="True" for="" class="invDes">Invoice No.</label>
+    <input type="text" name="" id="" placeholder="INV002">
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12 col-sm-12 content">
+    <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6" >
+     
+       <h3 contenteditable="True" >Bill To</h3>
+      <form >
+       <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes"> Name </label>
+       <input type="text" placeholder="Business Name" class="inputDes"><br>
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Email</label>
+       <input type="text" placeholder="name@business.com" class="inputDes">
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Address </label>
+       <input type="text" placeholder="street" class="inputDes">
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Phone</label>
+        <input type="text" placeholder="(+91) 701733****" class="inputDes">
+      </div>
+      </form>
+     </div>
+    
+    <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+      
+      <h3 contenteditable="True" >From</h3>
+      <form>
+       <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Name </label>
+       <input type="text" placeholder="Business Name" class="inputDes"><br>
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Email</label>
+       <input type="text" placeholder="name@business.com" class="inputDes">
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Address </label>
+       <input type="text" placeholder="street" class="inputDes">
+      </div>
+      <div class="form-group">
+        <label contenteditable="True" for="" class="labelDes">Phone</label>
+        <input type="text" placeholder="(+91) 701733****" class="inputDes">
+      </div>
+      </form>
+    </div>
+    </div>
+     </div>
+     <div class="container">
+      <div class="row clearfix">
+        <div class="col-md-10 col-sm-10 col-xs-10">
+          <table class="table table-bordered table-hover" id="tab_logic">
+            <thead>
+              <tr>
+                <th class="text-center"> # </th>
+                <th class="text-center"> Product </th>
+                <th class="text-center"> Qty </th>
+                <th class="text-center"> Price </th>
+                <th class="text-center"> Total </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id='addr0'>
+                <td>1</td>
+                <td><input type="text" name='product[]'  placeholder='Enter Product Name' class="form-control"/></td>
+                <td><input type="number" name='qty[]' placeholder='Enter Qty' class="form-control qty" step="0" min="0"/></td>
+                <td><input type="number" name='price[]' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0"/></td>
+                <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly/></td>
+              </tr>
+              <tr id='addr1'></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-10">
+          <button id="add_row" class="btn btn-default pull-left">Add Item</button>
+          <button id='delete_row' class="pull-right btn btn-default">Delete Item</button>
+        </div>
+      </div>
+      <div class="row clearfix col-md-11" style="margin-top:20px">
+        <div class="pull-right col-md-5">
+          <table class="table table-bordered table-hover" id="tab_logic_total">
+            <tbody>
+              <tr>
+                <th class="text-center">Sub Total</th>
+                <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control" id="sub_total" readonly/></td>
+              </tr>
+              <tr>
+                <th class="text-center">Tax</th>
+                <td class="text-center"><div class="input-group mb-2 mb-sm-0">
+                    <input type="number" class="form-control" id="tax" placeholder="0">
+                    <div class="input-group-addon">%</div>
+                  </div></td>
+              </tr>
+              <tr>
+                <th class="text-center">Tax Amount</th>
+                <td class="text-center"><input type="number" name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control" readonly/></td>
+              </tr>
+              <tr>
+                <th class="text-center">Grand Total</th>
+                <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00' class="form-control" readonly/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pull-left col-md-4">
+          <label contenteditable="True" for="">Notes</label><br>
+          <input class="inp" type="text" placeholder="Notes- Any information to be given"><br><br>
+          <label contenteditable="True" for="">Terms</label><br>
+          <input class="inp" type="text" placeholder="Terms and Conditions-late fees,payment methods"><br>
+        </div>
+      </div>
+    </div>
+  
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>

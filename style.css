@@ -1,0 +1,51 @@
+body{
+	background-color:#EFF8FF;
+	}
+	h1, p{
+	margin:0px;
+	}
+	.main-section{
+	background-color: #FFF;
+	border: 1px solid #8D43AC;
+	}
+	.header{
+	background-color: #8D43AC;
+	padding:30px 15px 20px 15px ;
+	color:#fff;
+	}
+	.content{
+	padding:20px 15px 20px 15px;
+	}
+	th{
+	background-color: #8D43AC;
+	color: #fff;
+	text-align: right;
+	}
+	.table td:nth-child(1),
+	.table th:nth-child(1){
+	text-align:left;
+	}
+	.lastSection{
+	padding: 20px 15px 30px 15px;
+	}
+	.labelDes{
+		/* padding: 5px 30px;   */
+		width: 100px;
+		height: 30px;
+	}
+	.inputDes{
+		width: 200px;
+		height: 30px;
+	}
+	.invDes{
+		padding: 20px 15px 15px 0px;	
+	}
+	.inp {
+		height: 60px;
+		width: 500px;
+  }
+  .image-upload > input {
+	visibility:hidden;
+	width:100;
+	height:100;
+  }
